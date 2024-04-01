@@ -38,19 +38,21 @@ const UsersList = () => {
           ))}
         </ul>
       </div>
-      <div>
+      
         {/* Render AddUser component in edit mode when editingUser is not null */}
         {editingUser !== null && (
-          <>
+          <div className="cart-popup-overlay">
+            <div className="cart-popup-container">
             <h3>Edit Mode</h3>
             <AddUser
               editUser={editUser}
               editingUser={editingUser}
               setEditingUser={setEditingUser}
             />
-          </>
+            </div>
+          </div>
         )}
-      </div>
+      
     </>
   );
 };
