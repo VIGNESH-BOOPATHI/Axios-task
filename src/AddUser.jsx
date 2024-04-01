@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useUserContext } from './UserContext';
 
-const AddUser = ({ editUser, editingUser, setEditingUser }) => {
+const AddUser = ({ editUser, editingUser, setEditingUser, closePopup }) => {
   const { addUser } = useUserContext();
   const [userData, setUserData] = useState({ name: '', phone: '', email: '' });
 
@@ -29,6 +29,9 @@ const AddUser = ({ editUser, editingUser, setEditingUser }) => {
     } else {
       addUser(userData);
     }
+    // Close the popup after form submission
+    closePopup();
+    // Clear the user data after submission
     setUserData({ name: '', phone: '', email: '' });
   };
 

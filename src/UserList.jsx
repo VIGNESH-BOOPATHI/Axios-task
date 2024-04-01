@@ -1,4 +1,3 @@
-// UserList.jsx
 import React, { useState } from 'react';
 import { useUserContext } from './UserContext';
 import AddUser from './AddUser';
@@ -12,6 +11,11 @@ const UsersList = () => {
   // Function to handle edit button click
   const handleEditClick = (user) => {
     setEditingUser(user);
+  };
+
+  // Function to close the popup
+  const closePopup = () => {
+    setEditingUser(null);
   };
 
   return (
@@ -39,19 +43,20 @@ const UsersList = () => {
         </ul>
       </div>
       
-        {/* Render AddUser component in edit mode when editingUser is not null */}
-        {editingUser !== null && (
-          <div className="cart-popup-overlay">
-            <div className="cart-popup-container">
-            <h3>Edit Mode</h3>
-            <AddUser
-              editUser={editUser}
-              editingUser={editingUser}
-              setEditingUser={setEditingUser}
-            />
-            </div>
-          </div>
-        )}
+      {/* Render AddUser component in edit mode when editingUser is not null */}
+{editingUser !== null && (
+  <div className="cart-popup-overlay">
+    <div className="cart-popup-container">
+      <h3>Edit Mode</h3>
+      <AddUser
+        editUser={editUser}
+        editingUser={editingUser}
+        setEditingUser={setEditingUser}
+        closePopup={closePopup} 
+      />
+    </div>
+  </div>
+)}
       
     </>
   );
